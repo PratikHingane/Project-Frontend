@@ -50,7 +50,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "scripts": []
           },
@@ -145,6 +147,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AssetManagementSystem"
+    }
+  },
+  "defaultProject": "AssetManagementSystem",
+  "cli": {
+    "analytics": false
+  }
 }

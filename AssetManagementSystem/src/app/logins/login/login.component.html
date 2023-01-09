@@ -1,0 +1,59 @@
+<!--Reactive-->
+<div class="container" style="background-image: url('loginbg.jpg');">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="assets/img/login.jpg" class="img-fluid">
+        </div>
+        <div class="form-group col-md-8">
+            <!--Reactive Form-->
+            <hr>
+            <form [formGroup]="loginForm" (ngSubmit)="loginCredential()">
+                <!--emailId-->
+                <div>
+                    <input type="text"
+                    placeholder="Enter login username"
+                    formControlName="username"
+                    required
+                    class="form-control"
+                    />
+                </div>
+                <!--EmailId Validation-->
+                <div *ngIf="isSubmitted && formControls.username.errors">
+                    <div *ngIf="formControls.username.errors.required"
+                    class="loginError">
+                        Enter valid username...!
+                    </div>
+                </div><br>
+                <!--password-->
+                <div>
+                    <input type="text"
+                    placeholder="Enter password"
+                    formControlName="password"
+                    required
+                    class="form-control"
+                    />
+                </div>
+                <!--EmailId Validation-->
+                <div *ngIf="isSubmitted && formControls.password.errors">
+                    <div *ngIf="formControls.password.errors.required"
+                    class="loginError">
+                        Enter valid password...!
+                    </div>
+                </div>
+                <br>
+                <!--Submit-->
+                <div>
+                    <button type="submit"
+                    class="btn btn-md btn-outlinr-primary">
+                <i class="fa fa-sign-in"></i>
+                Login
+                </button>
+                </div>
+                  <!--Displaying Error Msg-->
+                  <div *ngIf="error" class="loginError">
+                    {{error}}
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>

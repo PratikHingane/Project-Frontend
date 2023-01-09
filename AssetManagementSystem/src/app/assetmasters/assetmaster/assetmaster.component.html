@@ -1,0 +1,56 @@
+<p>assetmaster works!</p>
+
+<div class="container">
+    <div class="header">
+        <h2>Asset Master List</h2>
+        <div class="form-control">
+            <!--Search Functionality-->
+            <input class="form-control" type="text" placeholder="Search text here.."
+            [(ngModel)]="term" />
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr >
+                <th>Asset Master Id</th>
+                <th>Asset Def Id</th>
+                <th>Asset type Id</th>
+                <th>Vendor Id</th>
+                <th>Model</th>
+                <th>Serial No</th>
+                <th>Manu. Date</th>
+                <th>Warranty</th>
+                <th>FromDate</th>
+                <th>ToDate</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let assetMaster of assetmasterService.assetmasters | filter: term | paginate: { itemsPerPage: 10, currentPage: page }">
+                <td (click)="populateForm(assetMaster)">{{assetMaster.amId}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.adId}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.atId}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.vdId}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.amModel}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.amSnumber}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.pDate | date:"dd/MM/yyyy"}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.warranty}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.amFrom | date:"dd/MM/yyyy"}}</td>
+                <td (click)="populateForm(assetMaster)">{{assetMaster.amTo | date:"dd/MM/yyyy"}}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-info"
+                    (click)="updateAssetMaster(assetMaster.amId,assetMaster)" >E</button>
+                    &nbsp;
+                    <button class="btn btn-sm btn-outline-danger"
+                    (click)="deleteAssetMaster(assetMaster.amId)">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--Footer-->
+    <div class="footer">
+        <!--pagination-->
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+    </div>
+
+</div>

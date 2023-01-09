@@ -1,0 +1,111 @@
+<p>add-assetmaster works!</p>
+
+<!--Template Driven Form-->
+<form name="AssetmasterForm" #form="ngForm" autocomplete="off"
+(ngSubmit)="onSubmit(form)">
+
+    <!--AssetmasterId Autogenerate-->
+    <div class="form-group">
+        <label>AssetMaster Id:</label>
+    <input type="text" readonly name="amId"
+    [(ngModel)]="assetmasterService.formAssetMasterData.amId">
+
+    </div>
+
+    <!--AssetDefination Id-->
+    <div class="form-group">
+        Asset Defination Id:
+     <input type="text" 
+     name="adId"
+     readonly
+     #adId="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.adId"
+     class="form-control"
+     placeholder="Asset Defination Id"
+     />
+     </div>
+    
+     <!--AssetType Id-->
+     <div class="form-group">
+        Asset Type Id:
+     <input type="text" 
+     name="atId"
+     readonly
+     #atId="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.atId"
+     class="form-control"
+     placeholder="Asset Type Id"
+     />
+     </div>
+
+     <!--Vendor Id-->
+     <div class="form-group">
+       Vendor Id:
+     <input type="text" 
+     name="vdId"
+     readonly
+     #vdId="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.vdId"
+     class="form-control"
+     placeholder="Vendor Id"
+     />
+     </div>
+     
+     <!--Designation-->
+     <div class="form-group">
+        Model:
+     <input type="text" 
+     name="amModel"
+     #amModel="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.amModel"
+     class="form-control"
+     placeholder="Enter Model"
+     minlength="3" maxlength="25" 
+      />
+     </div>
+
+     <!--Designation-->
+     <div class="form-group">
+        Serial No:
+     <input type="text" 
+     name="amSnumber"
+     #amSnumber="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.amSnumber"
+     class="form-control"
+     placeholder="Enter Serial No" 
+      />
+     </div>
+    
+     <!--Product Manu Date-->
+     <div class="form-group">
+        Manu. Date:
+     <input type="date" 
+     name="pDate"
+     #pDate="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.pDate"
+     class="form-control"
+     />
+     </div>
+     
+     <!--Warranty-->
+     <div class="form-group">
+        Warranty:
+     <input type="number" 
+     name="warranty"
+     #warranty="ngModel"
+     [(ngModel)]="assetmasterService.formAssetMasterData.warranty"
+     class="form-control"
+     placeholder="Enter warranty in yrs"
+      />
+     </div>
+     
+
+      
+     <!--Submit-->
+     <div class="form-group">
+        <button type="submit" class="btn btn-lg btn-primary form-control"
+        [disabled]="!(form.valid && form.dirty)">Submit</button>
+
+     </div>
+
+</form>
