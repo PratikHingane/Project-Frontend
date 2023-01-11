@@ -10,7 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 const assetmasterRoutes: Routes=[
   {path:"list", component:AssetmasterComponent},
-  {path:"addassetmaster",component:AddAssetmasterComponent},
+  {path:"add/:amId",component:AddAssetmasterComponent},
   
 ]
 

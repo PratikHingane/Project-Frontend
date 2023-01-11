@@ -41,7 +41,7 @@ export class AssetmasterComponent implements OnInit {
 updateAssetMaster(amId:number , assetMaster: Assetmaster){
   console.log(amId);
   //navigate to Edit Form with selected Assetmaster
-  this.router.navigate(['assetmasters/addassetmaster',amId]);
+  this.router.navigate(['assetmasters/add',amId]);
   this.assetmasterService.formAssetMasterData=Object.assign({},assetMaster);
 }
 

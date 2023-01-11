@@ -49,6 +49,4 @@ updateAssetmaster(assetmaster:Assetmaster): Observable<any>{
   return this.httpClient.put(environment.apiUrl +'/api/assetmasters',assetmaster);
 
 }
-
-
 }

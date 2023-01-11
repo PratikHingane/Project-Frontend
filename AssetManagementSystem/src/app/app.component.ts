@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {LoginService} from './logins/login.service';
 import { Router } from '@angular/router';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-root',

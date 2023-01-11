@@ -28,7 +28,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     LoginsModule,
     AssetmastersModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [AssetmasterService],
   bootstrap: [AppComponent]

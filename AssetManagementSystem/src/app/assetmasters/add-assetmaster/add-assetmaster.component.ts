@@ -72,8 +72,4 @@ export class AddAssetmasterComponent implements OnInit {
     );
   }
 
-  redirectToEmpList(){
-    this.router.navigate(['assetmasterslist']);
-  }
-
 }
