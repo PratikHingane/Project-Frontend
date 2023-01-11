@@ -147,6 +147,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AssetManagementSystem"
+    }
+  },
+  "defaultProject": "AssetManagementSystem",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -18,6 +18,10 @@ import {PurchaseModule } from './purchase/purchase.module';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import {VendorService} from '../app/vendors/vendor.service';
+import {AssetdefinationService} from '../app/assetdefination/assetdefination.service';
+import {AssetdefinationModule } from '../app/assetdefination/assetdefination.module';
+import {VendorsModule} from '../app/vendors/vendors.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   imports: [
     BrowserModule,
     PurchaseModule ,
+    VendorsModule,
+    AssetdefinationModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -35,7 +41,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     Ng2SearchPipeModule,
     NgxPaginationModule
   ],
-  providers: [PurchaseService],
+  providers: [PurchaseService,VendorService,AssetdefinationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,101 @@
+<form name="assetDefinationForm" #form="ngForm" autocomplete="off"
+(ngSubmit)="onSubmit(form)"
+>
+    <div class="container-fluid">
+
+        <!--AssetDefinationId Autogenerate-->
+        <div class="form-group">
+            <label>Asset Defination Id:</label>
+        <input type="text" readonly name="adId"
+        [(ngModel)]="assetdefinationService.formAssetdefinationData.adId">
+        </div>
+        
+        <!--AssetDefination Name-->
+        <div class="form-group">
+            Asset Name:
+        <input type="text" 
+        name="adName"
+        #adName="ngModel"
+        [(ngModel)]="assetdefinationService.formAssetdefinationData.adName"
+        class="form-control"
+        placeholder="Enter Asset Defination Name"
+        minlength="3" maxlength="25" required
+        [ngClass]="{'is-invalid':adName.touched && adName.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="adName.touched && adName.invalid">
+            <div *ngIf="adName.errors.required">
+                Asset Defination Name is required
+            </div>
+        </div>
+
+        <!--Asset Type-->
+        <div class="form-group">
+            <label>
+                Asset Type:
+            </label>
+            <select
+                name="atId"
+                id="atId"
+                #atId="ngModel"
+                [(ngModel)]="assetdefinationService.formAssetdefinationData.atId"
+                class="form-control"
+                required
+            >
+            <option selected disabled > Select Vendor Type </option>
+            <option *ngFor="let asset of assetdefinationService.assettype"
+                    value="{{asset.atId}}">
+                {{asset.atName}}
+            </option>
+
+            </select>
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="atId.touched && atId.invalid">
+            <div *ngIf="atId.errors.required">
+                Asset Type is required
+            </div>
+        </div>
+
+        
+        <!--Asset Class-->
+        <div class="form-group">
+            <label>
+                Asset Class:
+            </label>
+            <select
+                name="acId"
+                id="acId"
+                #acId="ngModel"
+                [(ngModel)]="assetdefinationService.formAssetdefinationData.acId"
+                class="form-control"
+                required
+            >
+            <option selected disabled > Select Vendor Type </option>
+            <option *ngFor="let asset of assetdefinationService.assetclass"
+                    value="{{asset.acId}}">
+                {{asset.acName}}
+            </option>
+
+            </select>
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="acId.touched && acId.invalid">
+            <div *ngIf="acId.errors.required">
+                Asset Type is required
+            </div>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary form-control"
+                [disabled]="!(form.valid && form.dirty)">
+                Submit
+            </button>
+
+
+        </div>
+
+
+    </div>
+</form>
