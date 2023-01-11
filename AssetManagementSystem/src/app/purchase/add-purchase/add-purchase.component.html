@@ -1,0 +1,217 @@
+<form
+  name="purchaseForm"
+  #form="ngForm"
+  autocomplete="off"
+  (ngSubmit)="onSubmit(form)"
+>
+  <!--ProfessorId --AutoGenereate-->
+  <input
+    type="text"
+    readonly
+    name="pdId"
+    [(ngModel)]="purchaseService.formPurchaseData.pdId"
+  />
+
+  <!--ManagerId-->
+  <div class="form-group">
+    <label> Order Number : </label>
+    <input
+      name="pdOrderNo"
+      #pdOrderNo="ngModel"
+      type="text"
+      [(ngModel)]="purchaseService.formPurchaseData.pdOrderNo"
+      class="form-control"
+      placeholder="Enter Order No."
+      required
+      [ngClass]="{ 'is-invalid': pdOrderNo.touched && pdOrderNo.invalid }"
+    />
+    <!--Validation Error Message-->
+    <div
+      class="validation-error"
+      *ngIf="pdOrderNo.touched && pdOrderNo.invalid"
+    >
+      <div *ngIf="pdOrderNo.errors.required">Order Number is invalid!!</div>
+    </div>
+  </div>
+  <!--Asset Class-->
+
+  <div class="form-group">
+    <label> Asset Type: </label>
+
+    <select
+      name="atId"
+      id="atId"
+      #atId="ngModel"
+      [(ngModel)]="purchaseService.formPurchaseData.atId"
+      class="form-control"
+      required
+    >
+      <option selected disabled>Select Asset Type</option>
+
+      <option
+        *ngFor="let asset of purchaseService.assetclass"
+        value="{{ asset.atId }}"
+      >
+        {{ asset.atName }}
+      </option>
+    </select>
+  </div>
+
+  <!--Validation Error Msg-->
+
+  <div class="validation-error" *ngIf="atId.touched && atId.invalid">
+    <div *ngIf="atId.errors.required">Asset Type is required</div>
+  </div>
+
+
+  <div class="form-group">
+    <label> Vendors </label>
+
+    <select
+      name="vdId"
+      id="vdId"
+      #vdId="ngModel"
+      [(ngModel)]="purchaseService.formPurchaseData.vdId"
+      class="form-control"
+      required
+    >
+      <option selected disabled>Select Vendor</option>
+
+      <option
+        *ngFor="let vendor of purchaseService.vendors"
+        value="{{ vendor.vdId }}"
+      >
+        {{ vendor.vdName }}
+      </option>
+    </select>
+  </div>
+
+  <!--Validation Error Msg-->
+
+  <div class="validation-error" *ngIf="vdId .touched && vdId .invalid">
+    <div *ngIf="vdId .errors.required">Vendor is required</div>
+  </div>
+
+  <div class="form-group">
+    <label> Quantity: </label>
+    <input
+      name="qnt"
+      #qnt="ngModel"
+      type="number"
+      [(ngModel)]="purchaseService.formPurchaseData.qnt"
+      class="form-control"
+      placeholder="Select Quantity"
+      required
+      [ngClass]="{ 'is-invalid': qnt.touched && qnt.invalid }"
+    />
+    <div class="validation-error" *ngIf="qnt.touched && qnt.invalid">
+      <div *ngIf="qnt.errors.required">Select Quantity!!</div>
+    </div>
+  </div>
+
+  <!--JoiningDate-->
+  <div class="form-group">
+    <label> Date Of Order : </label>
+    <input
+      name="pdOrderDate"
+      #pdOrderDate="ngModel"
+      type="date"
+      [(ngModel)]="purchaseService.formPurchaseData.pdOrderDate"
+      class="form-control"
+      placeholder="Enter Order Date"
+      required
+      [ngClass]="{ 'is-invalid': pdOrderDate.touched && pdOrderDate.invalid }"
+    />
+    <!--Validation Error Message-->
+    <div
+      class="validation-error"
+      *ngIf="pdOrderDate.touched && pdOrderDate.invalid"
+    >
+      <div *ngIf="pdOrderDate.errors.required">Date Of Order is required!!</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label> Date Of Delivery : </label>
+    <input
+      name="pdDeliveryDate"
+      #pdDeliveryDate="ngModel"
+      type="date"
+      [(ngModel)]="purchaseService.formPurchaseData.pdOrderDate"
+      class="form-control"
+      placeholder="Enter Delivery Date"
+      required
+      [ngClass]="{
+        'is-invalid': pdDeliveryDate.touched && pdDeliveryDate.invalid
+      }"
+    />
+    <!--Validation Error Message-->
+    <div
+      class="validation-error"
+      *ngIf="pdDeliveryDate.touched && pdDeliveryDate.invalid"
+    >
+      <div *ngIf="pdDeliveryDate.errors.required">
+        Date Of Delivery is required!!
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label> Status </label>
+
+    <select
+      name="statusId"
+      id="statusId"
+      #statusId="ngModel"
+      [(ngModel)]="purchaseService.formPurchaseData.statusId"
+      class="form-control"
+      (change)="changedStatus($event)"
+      required
+    >
+      <option selected disabled>Select Status</option>
+
+      <option
+        *ngFor="let demo of purchaseService.status"
+        value="{{ demo.statusId }}"
+      >
+        {{ demo.status }}
+      </option>
+    </select>
+  </div>
+
+  <!--Validation Error Msg-->
+
+  <div class="validation-error" *ngIf="statusId .touched && statusId.invalid">
+    <div *ngIf="statusId .errors.required">Status is required!!</div>
+  </div>
+
+  <div class="form-group">
+    <label> Email ID : </label>
+    <input
+      name="emailId"
+      #emailId="ngModel"
+      type="text"
+      [(ngModel)]="purchaseService.formPurchaseData.emailId"
+      class="form-control"
+      placeholder="Enter Email ID"
+      required
+      [ngClass]="{ 'is-invalid': emailId.touched && emailId.invalid }"
+    />
+
+    <!--Validation Error Message-->
+    <div class="validation-error" *ngIf="emailId.touched && emailId.invalid">
+      <div *ngIf="emailId.errors.required">Email ID is required!!</div>
+    </div>
+  </div>
+
+  <br />
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-lg btn-primary form-control"
+      [disabled]="!(form.valid && form.dirty)"
+    >
+      Submit
+    </button>
+  </div>
+</form>
