@@ -1,0 +1,151 @@
+
+<form name="AssetForm" #form="ngForm" autocomplete="off"
+(ngSubmit)="onSubmit(form)"
+>
+
+
+    <div class="container-fluid">
+
+    <br><br><br>        
+
+        <!--VendorId Autogenerate-->
+        <div class="form-group">
+            <label>Vendor Id:</label>
+        <input type="text" readonly name="vdId"
+        [(ngModel)]="vendorService.formVendorData.vdId">
+        </div>
+        
+        <!--Vendors Name-->
+        <div class="form-group">
+            Vendor Name:
+        <input type="text" 
+        name="vdName"
+        #vdName="ngModel"
+        [(ngModel)]="vendorService.formVendorData.vdName"
+        class="form-control"
+        placeholder="Enter Vendor Name"
+        minlength="3" maxlength="25" required
+        [ngClass]="{'is-invalid':vdName.touched && vdName.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="vdName.touched && vdName.invalid">
+            <div *ngIf="vdName.errors.required">
+                Vendor Name is required
+            </div>
+        </div>
+
+        <!--Vendor Type-->
+        <div class="form-group">
+            Vendor Type:
+        <input type="text" 
+        name="vdType"
+        #vdType="ngModel"
+        [(ngModel)]="vendorService.formVendorData.vdType"
+        class="form-control"
+        placeholder="Enter Vendor Type"
+        minlength="3" maxlength="25" required
+        [ngClass]="{'is-invalid':vdType.touched && vdType.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="vdType.touched && vdType.invalid">
+            <div *ngIf="vdType.errors.required">
+                Vendor Type is required
+            </div>
+        </div>
+
+        <!--Asset Type-->
+        <div class="form-group">
+            <label>
+                Asset Type:
+            </label>
+            <select
+                name="atId"
+                id="atId"
+                #atId="ngModel"
+                [(ngModel)]="vendorService.formVendorData.atId"
+                class="form-control"
+                required
+            >
+                <option selected disabled > Select Vendor Type </option>
+                <option *ngFor="let asset of vendorService.assettypes"
+                        value="{{asset.atId}}">
+                    {{asset.atName}}
+                </option>
+            </select>
+        </div>
+        <div class="validation-error" *ngIf="atId.touched && atId.invalid">
+            <div *ngIf="atId.errors.required">
+                Asset Type is required
+            </div>
+        </div>
+
+
+        <!--Validate From-->
+        <div class="form-group">
+            Validate From:
+        <input type="date" 
+        name="vdFrom"
+        #vdFrom="ngModel"
+        [(ngModel)]="vendorService.formVendorData.vdFrom"
+        class="form-control"
+        required
+        [ngClass]="{'is-invalid':vdFrom.touched && vdFrom.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="vdFrom.touched && vdFrom.invalid">
+            <div *ngIf="vdFrom.errors.required">
+               Invalid Date
+            </div>
+        </div>
+
+        <!--Validate Till-->
+        <div class="form-group">
+            Validate Till:
+        <input type="date" 
+        name="vdTo"
+        #vdTo="ngModel"
+        [(ngModel)]="vendorService.formVendorData.vdTo"
+        class="form-control"
+        required
+        [ngClass]="{'is-invalid':vdTo.touched && vdTo.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="vdTo.touched && vdTo.invalid">
+            <div *ngIf="vdTo.errors.required">
+               Invalid Date
+            </div>
+        </div>
+
+        
+        <!--Vendor Address-->
+        <div class="form-group">
+            Address:
+        <input type="text" 
+        name="address"
+        #address="ngModel"
+        [(ngModel)]="vendorService.formVendorData.address"
+        class="form-control"
+        placeholder="Enter Address"
+        minlength="3" maxlength="25" required
+        [ngClass]="{'is-invalid':address.touched && address.invalid}" />
+        </div>
+        <!--Validation Error Msg-->
+        <div class="validation-error" *ngIf="address.touched && address.invalid">
+            <div *ngIf="address.errors.required">
+                Address is required
+            </div>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary form-control"
+                [disabled]="!(form.valid && form.dirty)">
+                Submit
+            </button>
+
+
+        </div>
+
+
+    </div>
+</form>
